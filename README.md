@@ -2,7 +2,7 @@
 
 Fork de PandaSpigot.
 
-patchs [ici](./patches/).
+Patchs server [ici](./patches/).
 
 Disocrd [Discord](https://discord.gg/m6vCCX6Hvr) de PandaSpigot.
 
