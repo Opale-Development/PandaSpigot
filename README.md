@@ -4,7 +4,7 @@ Fork de PandaSpigot.
 
 Patchs server [ici](./patches/).
 
-Disocrd [Discord](https://discord.gg/m6vCCX6Hvr) de PandaSpigot.
+[Discord](https://discord.gg/m6vCCX6Hvr) de PandaSpigot.
 
 ## API
 API patchs [ici](./patches/api/).
@@ -44,13 +44,3 @@ dependencies {
 }
 ```
 </details>
-
-## Building
-To compile PandaSpigot, you'll need:
-- JDK 8 (or above)
-- Git
-- Bash
-
-Building, patching, and compiling are all done through the main `panda` script.
-
-PandaSpigot can be built by running `./panda jar`, and you will find the final Paperclip jar in `paperclip.jar`
