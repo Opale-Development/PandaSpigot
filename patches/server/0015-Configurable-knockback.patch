@@ -97,45 +97,6 @@ index 0ad4edb8390f396d935d321caf67af0f209d5420..9034e1ad7a013c7288e68322a65798e4
                          }
  
                          if (flag) {
-diff --git a/src/main/java/net/minecraft/server/EntityLiving.java b/src/main/java/net/minecraft/server/EntityLiving.java
-index c8b4e292849486eadfb437110466d6eafe275411..72c7e6fc8bb0a71877d6759af44d39030bcf51f5 100644
---- a/src/main/java/net/minecraft/server/EntityLiving.java
-+++ b/src/main/java/net/minecraft/server/EntityLiving.java
-@@ -897,18 +897,23 @@ public abstract class EntityLiving extends Entity {
-     public void a(Entity entity, float f, double d0, double d1) {
-         if (this.random.nextDouble() >= this.getAttributeInstance(GenericAttributes.c).getValue()) {
-             this.ai = true;
--            float f1 = MathHelper.sqrt(d0 * d0 + d1 * d1);
--            float f2 = 0.4F;
--
--            this.motX /= 2.0D;
--            this.motY /= 2.0D;
--            this.motZ /= 2.0D;
--            this.motX -= d0 / (double) f1 * (double) f2;
--            this.motY += (double) f2;
--            this.motZ -= d1 / (double) f1 * (double) f2;
--            if (this.motY > 0.4000000059604645D) {
--                this.motY = 0.4000000059604645D;
-+            // PandaSpigot start - Configurable knockback
-+            com.hpfxd.pandaspigot.config.PandaSpigotWorldConfig.KnockbackConfig knockbackConfig = entity.world.pandaSpigotConfig.knockback;
-+            double magnitude = MathHelper.sqrt(d0 * d0 + d1 * d1);
-+    
-+            double friction = knockbackConfig.friction;
-+            this.motX /= friction;
-+            this.motY /= friction;
-+            this.motZ /= friction;
-+    
-+            this.motX -= d0 / magnitude * knockbackConfig.horizontal;
-+            this.motY += knockbackConfig.vertical;
-+            this.motZ -= d1 / magnitude * knockbackConfig.horizontal;
-+    
-+            if (this.motY > knockbackConfig.verticalLimit) {
-+                this.motY = knockbackConfig.verticalLimit;
-             }
-+            // PandaSpigot end
- 
-         }
-     }
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 index d44fc62b9d9454dad79514731efac024be35aa76..801e19baa711b517eb437a173ea1edcc38b2e7e8 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
