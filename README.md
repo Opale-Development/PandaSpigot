@@ -1,3 +1,5 @@
+Ceci est un fork de https://github.com/hpfxd/PandaSpigot, nous n'en sommes pas les auteurs.
+
 # PandaSpigot
 
 Fork de PandaSpigot.
